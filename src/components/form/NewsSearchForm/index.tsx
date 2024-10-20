@@ -1,11 +1,13 @@
+import searchQueryAtom from '@/store/atoms/searchQueryAtom';
 import { responsive } from '@/styles/responsive';
 import { TBingNewsQuery } from '@/types';
 import { hasSpecialCharacters } from '@/utils/newsItem';
 import AlertText from '@/views/newsSearchForm/AlertText';
 import NewsSearchButton from '@/views/newsSearchForm/NewsSearchButton';
 import NewsSearchInput from '@/views/newsSearchForm/NewsSearchInput';
+import { useAtom } from 'jotai';
 import { useRouter } from 'next/navigation';
-import React, { memo, useMemo, useState } from 'react';
+import React, { memo, useMemo } from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
@@ -29,23 +31,26 @@ const Form = styled.form`
 // input 최대 길이
 const INPUT_MAX_LENGTH = 20;
 
-const NewsSearchForm = ({ query }) => {
+const NewsSearchForm = () => {
+  const [{ query }, setSearchQuery] = useAtom(searchQueryAtom);
   const router = useRouter();
-  const [inputText, setInputText] = useState<TBingNewsQuery['query']>(query);
 
   const isValidForm = useMemo(
-    () => hasSpecialCharacters(inputText) || inputText.length <= INPUT_MAX_LENGTH,
-    [inputText],
+    () => hasSpecialCharacters(query) || query.length <= INPUT_MAX_LENGTH,
+    [query],
   );
-  const isQueryEmpty = useMemo(() => inputText === '', [inputText]);
+  const isQueryEmpty = useMemo(() => query === '', [query]);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputText(e.target.value);
+    setSearchQuery((prev) => ({
+      ...prev,
+      query: e.target.value,
+    }));
   };
 
   const onClickSearch = () => {
-    if (inputText === '') return;
-    router.push(`?query=${inputText}`);
+    if (query === '') return;
+    router.push(`?query=${query}`);
   };
 
   const onKeyDown = (e) => {
@@ -62,7 +67,7 @@ const NewsSearchForm = ({ query }) => {
   return (
     <Container className="flex-center">
       <Form onSubmit={onSubmit} className="flex-center">
-        <NewsSearchInput data-testid="search-input" value={inputText} onChange={onChange}/>
+        <NewsSearchInput data-testid="search-input" value={query} onChange={onChange} />
         <div className="search-button">
           <NewsSearchButton onKeyDown={onKeyDown} disabled={!isValidForm || isQueryEmpty} />
         </div>

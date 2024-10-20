@@ -11,6 +11,7 @@ export type TUserInfo = {
  */
 export type TBingNewsQuery = {
   query: string;
+  page?: number;
 };
 
 /**

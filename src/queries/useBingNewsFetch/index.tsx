@@ -17,6 +17,8 @@ import { queryClient } from '@/queries/queryClient';
 import { useMemo } from 'react';
 import { flatMap } from 'lodash-es';
 import QUERY_KEY from '@/queries/keys';
+import { useAtomValue } from 'jotai';
+import searchQueryAtom from '@/store/atoms/searchQueryAtom';
 
 export interface IUseBingNewsFetchParams {
   query: TBingNewsQuery['query'];
@@ -79,6 +81,7 @@ export const prefetchBingNewsFetch = async (query) => {
 };
 
 /**
+ * @deprecated
  * 뉴스 검색 쿼리
  * @param query: 검색어
  * @param enabled: 쿼리 활성화 여부
@@ -122,7 +125,8 @@ const useBingNewsFetch = ({ query, enabled = true, maxPage = 1 }: IUseBingNewsFe
 /**
  * 뉴스 결과 리스트 호출 query hook
  */
-export const useFetchBingNewsList = ({ query, curPage, maxPage }) => {
+export const useFetchBingNewsList = ({ maxPage }) => {
+  const { query, page: curPage } = useAtomValue(searchQueryAtom);
   const queryStates = useSuspenseInfiniteQuery({
     queryKey: [QUERY_KEY.BING_NEWS_SEARCH, query],
     queryFn: async ({ pageParam = curPage }) => {

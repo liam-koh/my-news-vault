@@ -30,16 +30,14 @@ const Container = styled.div`
 /**
  * 뉴스 리스트 출력 컴포넌트
  */
-export default function NewsSearchPage14({ query }: IProps) {
-  const [page, setPage] = useState(1);
-  console.log('############!1111', query);
+export default function NewsSearchPage14() {
   return (
     <Container className="flex-column">
       <div className="search">
-        <QueryForm query={query} />
+        <QueryForm />
       </div>
       <Suspense fallback={<div>loading...</div>}>
-        <NewsCardList14 query={query} page={page} />
+        <NewsCardList14 />
       </Suspense>
     </Container>
   );
