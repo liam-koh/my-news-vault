@@ -1,17 +1,16 @@
 import styled from 'styled-components';
-import { TNewsItem } from '@/types';
 import { responsive } from '@/styles/responsive';
 import dynamic from 'next/dynamic';
 import { useFetchBingNewsList } from '@/queries/useBingNewsFetch';
 import { memo } from 'react';
 import { NEWS_LIST_PAGE_LIMIT } from '@/constants';
+import searchQueryAtom from '@/store/atoms/searchQueryAtom';
+import { useAtom } from 'jotai';
+import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 
 const NewsCard = dynamic(() => import('@/components/common/NewsCard'), { ssr: false });
 
-interface INewsCardListProps {
-  query: string;
-  page: number;
-}
+interface INewsCardListProps {}
 
 const Container = styled.div`
   width: 100%;
@@ -41,10 +40,21 @@ const GridContainer = styled.div`
   margin-bottom: 1.88rem;
 `;
 
-const NewsCardList14 = ({ query, page }: INewsCardListProps) => {
+const NewsCardList14 = () => {
+  const [searchQuery, setSearchQuery] = useAtom(searchQueryAtom);
+  // query data
   const { flattenData: newsItems } = useFetchBingNewsList({
-    query,
-    curPage: page,
+    maxPage: NEWS_LIST_PAGE_LIMIT,
+  });
+
+  // infinite scroll
+  useInfiniteScroll({
+    onTriggered: () => {
+      setSearchQuery((prev) => ({
+        ...prev,
+        page: searchQuery.page + 1,
+      }));
+    },
     maxPage: NEWS_LIST_PAGE_LIMIT,
   });
 

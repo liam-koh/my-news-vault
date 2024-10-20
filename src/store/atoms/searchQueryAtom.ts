@@ -6,4 +6,14 @@ const searchQueryAtom = atom<TBingNewsQuery>({
   page: 0,
 });
 
+// write용 atom
+const readWriteSearchQueryAtom = atom(null, (get, set, newState: Partial<TBingNewsQuery>) => {
+  const curState = get(searchQueryAtom);
+
+  set(searchQueryAtom, {
+    ...curState,
+    ...newState,
+  });
+});
+
 export default searchQueryAtom;

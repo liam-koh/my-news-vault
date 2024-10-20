@@ -6,6 +6,9 @@ import { TBingNewsQuery } from '@/types';
 import { Suspense, useEffect, useState } from 'react';
 import { styled } from 'styled-components';
 import NewsCardList14 from './NewsCardList14';
+import { useAtom } from 'jotai';
+import searchQueryAtom from '@/store/atoms/searchQueryAtom';
+import useInfiniteScroll from '@/hooks/useInfiniteScroll';
 
 interface IProps {
   query: TBingNewsQuery['query'];
