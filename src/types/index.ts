@@ -74,7 +74,36 @@ export type TBingNewsAPIRes = {
   };
   readLink: string;
   totalEstimatedMatches: number;
-  value: TRawNewsItem[];
+  value: {
+    datePublished: string;
+    description: string;
+    headline?: true;
+    name: string;
+    image?: {
+      thumbnail: {
+        contentUrl: string;
+        height: number;
+        width: number;
+      };
+      name?: string;
+    };
+    provider: {
+      _type?: string;
+      image?: {
+        thumbnail?: {
+          contentUrl?: string;
+          width?: number;
+          height?: number;
+        };
+      };
+      name?: string;
+    }[];
+    url: string;
+    category?: string;
+    about?: any;
+    mentions?: any;
+    video?: any;
+  }[];
   sort?: any;
 };
 
