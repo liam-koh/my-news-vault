@@ -1,6 +1,6 @@
 'use client';
 
-import NewsGridList from '@/components/atoms/NewsGridList';
+import NewsGridList from '@/components/atoms/NewsGridLayout';
 import React, { useMemo } from 'react';
 import useBingNewsFetch from '@/queries/useBingNewsFetch';
 import useInfiniteScroll, { InfiniteScrollWrapper } from '@/components/atoms/InfiniteScroll';

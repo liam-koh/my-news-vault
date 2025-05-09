@@ -1,5 +1,5 @@
 import Skeleton from '@/components/atoms/Skeleton';
-import NewsGridList from '@/components/atoms/NewsGridList';
+import NewsGridList from '@/components/atoms/NewsGridLayout';
 import { cn } from '@/lib/utils';
 import React from 'react';
 

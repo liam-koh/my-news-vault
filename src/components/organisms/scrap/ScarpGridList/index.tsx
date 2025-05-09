@@ -1,6 +1,6 @@
 'use client';
 
-import NewsGridList from '@/components/atoms/NewsGridList';
+import NewsGridList from '@/components/atoms/NewsGridLayout';
 import React, { useMemo } from 'react';
 import useScrappedNewsList from '@/queries/useScrappedNewsList';
 import useAuth from '@/hooks/useAuth';
