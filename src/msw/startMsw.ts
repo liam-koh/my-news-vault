@@ -6,7 +6,7 @@
  */
 async function startMsw() {
   if (process.env.NODE_ENV === 'production') return;
-  if (typeof window !== 'undefined') {
+  if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'test') {
     const worker = await import('@/msw/browser').then((res) => res.default);
     await worker.start({
       onUnhandledRequest: 'warn',
