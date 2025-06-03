@@ -16,6 +16,9 @@
       "tsx": true
     }
   },
+  "globals": {
+    "vi": true
+  },
   "rules": {
     "import/extensions": "off", // import시 확장자명을 사용하지 않음
     "no-unused-vars": "warn", // 일단 warn으로

@@ -11,8 +11,8 @@ global.TransformStream = TransformStream;
 global.BroadcastChannel = BroadcastChannel;
 
 // next/router mock
-jest.mock('next/router', () => ({
-  useRouter: jest.fn().mockReturnValue({
+vi.mock('next/router', () => ({
+  useRouter: vi.fn().mockReturnValue({
     query: {
       query: '테스트검색',
     },
@@ -20,8 +20,8 @@ jest.mock('next/router', () => ({
 }));
 
 // intersection observer mock
-window.IntersectionObserver = jest.fn(function () {
-  this.observe = jest.fn();
-  this.unobserve = jest.fn();
-  this.disconnect = jest.fn();
+window.IntersectionObserver = vi.fn(function () {
+  this.observe = vi.fn();
+  this.unobserve = vi.fn();
+  this.disconnect = vi.fn();
 });

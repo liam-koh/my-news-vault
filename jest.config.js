@@ -6,7 +6,7 @@ const createJestConfig = nextJest({
 
 // Add any custom config to be passed to Jest
 const customJestConfig = {
-  setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+  setupFilesAfterEnv: ['<rootDir>/vi.setup.js'],
   // jest 절대경로 설정 부분
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',

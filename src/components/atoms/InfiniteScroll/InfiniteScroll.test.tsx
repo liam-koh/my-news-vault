@@ -6,7 +6,7 @@ import { composeStories } from '@storybook/react';
 import * as InfiniteScrollStories from './InfiniteScroll.stories';
 import { mswTestHandler } from '@/msw/handler/newsHandler';
 
-// jest.setup.ts
+// vi.setup.ts
 // FIXME: TOTAL_EXEC_TRIGGER_COUNT static 사용 제거 (여러개 사용시 문제발생)
 class MockIntersectionObserver {
   callback: IntersectionObserverCallback;
@@ -55,7 +55,7 @@ class MockIntersectionObserver {
   }
 }
 
-jest.spyOn(window, 'IntersectionObserver').mockImplementation((cb) => {
+vi.spyOn(window, 'IntersectionObserver').mockImplementation((cb) => {
   const observer = new MockIntersectionObserver(cb);
   return observer as unknown as IntersectionObserver;
 });

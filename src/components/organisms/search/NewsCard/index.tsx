@@ -62,8 +62,3 @@ function NewsCard({ newsItem }: IProps) {
 }
 
 export default memo(NewsCard);
-
-// <Card.Footer className="absolute bottom-0 left-0 w-full h-auto flex justify-between p-4">
-//   <span className="text-sm text-mnv-gray-40">{datePublished}</span>
-//   <ScrapButton newsItem={newsItem} isScrapped={newsItem.isScrapped} />
-// </Card.Footer>;
