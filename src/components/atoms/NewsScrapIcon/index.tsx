@@ -23,7 +23,7 @@ export default function NewsScrapIcon({ isScrapped, toggle, alt, className }: IP
     <ScrapIcon
       aria-label={alt}
       className={cn(
-        'w-[2rem] h-[2rem]',
+        '!w-[2rem] !h-[2rem]',
         toggle && isScrapped ? 'fill-pink-500' : 'fill-gray-400',
         className,
       )}

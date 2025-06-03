@@ -38,7 +38,8 @@ const ItemCard = ({
 };
 
 /**
- * InfiniteScroll은 무한스크롤을 구현할 수 있는 컴포넌트입니다. 무한스크롤 구현을 위한 Wrapper와
+ * InfiniteScroll은 무한스크롤을 구현할 수 있는 컴포넌트입니다. 무한스크롤 구현을 위한 Wrapper와 useInfiniteScroll 훅을 동시에 사용하여야 합니다.
+ * - 여기에 각 컴포넌트 설명 추가, 사용법 추가
  *
  */
 const meta: Meta<any> = {
