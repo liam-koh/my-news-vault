@@ -55,6 +55,11 @@ class MockIntersectionObserver {
   }
 }
 
+Object.defineProperty(window, 'IntersectionObserver', {
+  writable: true,
+  value: MockIntersectionObserver,
+});
+
 vi.spyOn(window, 'IntersectionObserver').mockImplementation((cb) => {
   const observer = new MockIntersectionObserver(cb);
   return observer as unknown as IntersectionObserver;
