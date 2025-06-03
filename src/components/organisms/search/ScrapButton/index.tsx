@@ -128,9 +128,7 @@ export default function ScrapButton({ newsItem, isScrapped }: IScrapButtonProps)
         }}
         className="p-2"
       >
-        <NewsScrapIcon
-          className={cn('!w-8 !h-8', isScrapped ? 'fill-pink-500' : 'fill-gray-400')}
-        />
+        <NewsScrapIcon isScrapped={isScrapped} toggle />
       </Button>
     </SubscribeAnimation>
   );

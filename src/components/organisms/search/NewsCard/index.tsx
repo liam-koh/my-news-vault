@@ -3,11 +3,11 @@ import ProfileImage from '@/components/atoms/ProfileImage';
 import { cn } from '@/lib/utils';
 import { TNewsItem } from '@/types';
 import React, { memo } from 'react';
-import NewsScrapIcon from '@/assets/news-scrap-icon.svg';
 import ImageView from '@/components/atoms/ImageView';
 import { useAtom } from 'jotai';
 import { detailNewsAtom } from '@/components/templates/search/NewsDetailTemplate';
 import styles from './NewsCard.module.css';
+import NewsScrapIcon from '@/components/atoms/NewsScrapIcon';
 
 interface IProps {
   newsItem: TNewsItem;
@@ -39,9 +39,10 @@ function NewsCard({ newsItem }: IProps) {
         alt={title}
         className={cn('absolute top-[0.6rem] left-[0.6rem] w-[2rem] h-[2rem] z-30')}
       />
-      {isScrapped && (
-        <NewsScrapIcon className="absolute top-[0.6rem] right-[0.6rem] w-[2rem] h-[2rem] z-30 fill-pink-500" />
-      )}
+      <NewsScrapIcon
+        className="absolute top-[0.6rem] right-[0.6rem] z-30"
+        isScrapped={isScrapped}
+      />
       {/* thumbnail */}
       {/* FIXME: ImageView 적용, 현재 next/image가 외부이미지를 못읽어 문제발생 */}
       <ImageView src={thumbnail} alt={title} className={cn('w-full aspect-[4/3.8]')} />
