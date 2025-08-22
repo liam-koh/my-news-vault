@@ -7,7 +7,7 @@
     "dev:mock": "cross-env NEXT_PUBLIC_MSW_ENABLED=true next dev -p 3000",
     "build": "next build",
     "build:st": "next build && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
-    "start:st": "node .next/standalone/server.js",
+    "start:st": "node my-app/server.js",
     "start": "next start -p 3000",
     "lint": "next lint",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
